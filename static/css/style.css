@@ -1,0 +1,336 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather:400,400i,700");
+
+body {
+    font-family: Arial, sans-serif;
+   background-image: url("../bacground/dark.png");
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 1s, color 1s;
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    display: none; /* 默认隐藏 */
+
+
+}
+.theme-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+ 
+    opacity: 0; /* 初始透明 */
+    transition: opacity 0.8s ease; /* 过渡效果 */
+    
+}
+
+/* 仅在 light 主题时显示视频 */
+body.light #background-video {
+    display: block;
+    opacity: 1;
+
+}
+
+/* 可选：在 light 模式时隐藏普通背景 */
+body.dark #background-video-dark {
+    display: block;
+    opacity: 1;
+  
+}
+
+/* 在各自主题下隐藏默认背景色 */
+body.light, body.dark {
+    background: none;
+
+}
+.page {
+    position: absolute;
+    align-items: center;
+    top:0px;
+    right:250px;
+}
+/* 浅色主题 */
+
+
+
+.player-container.dark {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    color: #ffffff;
+}
+/* 主题切换组件样式 */
+.theme-switch__input,
+.theme-switch__label {
+    position: absolute;
+    z-index: 1;
+}
+
+.theme-switch__input {
+    opacity: 0;
+}
+
+.theme-switch__label {
+    padding: 20px;
+    margin: 60px;
+    transition: background-color 200ms ease-in-out;
+    width: 80px;
+    height: 15px;
+    border-radius: 50px;
+    text-align: center;
+    background-color: slateGray;
+    box-shadow: -4px 4px 15px inset rgba(0, 0, 0, 0.4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.theme-switch__label::before,
+.theme-switch__label::after {
+    font-size: 2rem;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.theme-switch__label::before {
+    content: '☀️';
+    right: 100%;
+    margin-right: 10px;
+    color: orange;
+}
+
+.theme-switch__label::after {
+    content: '🌙';
+    left: 100%;
+    margin-left: 10px;
+    color: lightSlateGray;
+}
+
+.theme-switch__label span {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+}
+
+.theme-switch__label span::after {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    content: '';
+    border-radius: 50%;
+    background-color: lightBlue;
+    transition: transform 200ms, background-color 200ms;
+    box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.theme-switch__input:checked ~ .theme-switch__label {
+    background-color: lightSlateGray;
+}
+
+.theme-switch__input:checked ~ .theme-switch__label::before {
+    color: lightSlateGray;
+}
+
+.theme-switch__input:checked ~ .theme-switch__label::after {
+    color: turquoise;
+}
+
+.theme-switch__input:checked ~ .theme-switch__label span::after {
+    transform: translateX(70px);
+}
+
+/* 其他样式 */
+.player-container {
+    width: 600px;
+    height: 350px;
+    text-align: center;
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /
+}
+
+.record-container {
+    display: flex;
+    width: 100%;
+    height: 250px;
+    margin-top: 20px;
+    justify-content: space-between;
+ 
+
+}
+/* 歌单区域容器样式 */
+.playlist-container {
+    max-height: 90px; /* 设置最大高度以限制显示区域 */
+    overflow-y: auto; /* 启用垂直滚动 */
+    margin-top: -120px; /* 与上方选项区域的间距 */
+    margin-bottom: 40px; /* 与上方选项区域的间距 */
+    margin-left:260px; /* 与下方歌词区域的间距 */
+
+    border-radius: 8px; /* 圆角 */
+}
+
+/* 歌单项样式 */
+.playlist-item {
+    padding: 15px;
+    width: 220px;
+    margin-bottom: 10px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* 悬停时的歌单项效果 */
+.playlist-item:hover {
+    background-color: #333;
+}
+
+
+.playlist-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+
+.left-section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.record {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #000;
+    overflow: hidden;
+    animation: rotate 5s linear infinite paused;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(29, 185, 84, 0.6);
+}
+
+.record img {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+}
+
+.song-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.song-info h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #ffffff;
+}
+
+.song-info p {
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+.topright {
+    display: flex; /* 使用 flexbox 布局使子元素横向排列 */
+    gap: 15px; /* 子元素之间的间距 */
+    justify-content: center; /* 子元素居中 */
+}
+
+.option {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    width: 100px; /* 固定宽度 */
+    height: 100px; /* 固定高度，形成正方形 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+
+.option:hover {
+    background-color: #1db954;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.controls button:hover {
+    color: #1db954;
+}
+
+.lyrics {
+    margin-top: 0px;
+    font-size: 14px;
+    color: #b3b3b3;
+    height: 40px;
+    overflow-y: auto;
+    border-top: 1px solid #444;
+    padding-top: 0px;
+}
+
+.lyrics p {
+    line-height: 1.6;
+}
+
+
+/* 旋转动画 */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.playing .record {
+    animation-play-state: running;
+}
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<style>
+
+</style>
+<body>
+    <video autoplay muted loop id="background-video" class="light-video">
+        <source src="../static/bacground/light2.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+    <video autoplay muted loop id="background-video-dark" class="theme-video dark-video">
+        <source src="../static/bacground/dark2.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+  
+<div class="page">
+    <!-- Theme switch -->
+    <input type="checkbox" id="themeSwitch" name="theme-switch" class="theme-switch__input" />
+    <label for="themeSwitch" class="theme-switch__label">
+        <span></span>
+    </label>
+</div>
+    <div class="player-container">
+
+        <div class="record-container">
+            <!-- 左侧区域：旋转圆盘和歌曲信息 -->
+
+            <div class="left-section">
+                <div class="record">
+                    <img id="coverImage" src="cover1.jpg" alt="Album Cover">
+                </div>
+                <div class="song-info">
+                    <h2 id="songTitle">Song 1</h2>
+                    <p id="artistName">Artist 1</p>
+                </div>
+            </div>
+
+            <!-- 右侧区域：最近播放、推荐、可能喜欢 -->
+            <div class="topright">
+                <div class="option">最近播放</div>
+                <div class="option">推荐</div>
+                <div class="option">可能喜欢</div>
+            </div>
+           
+           
+        </div>
+        <div class="playlist-container">
+            <div class="playlist-item">歌单 1</div>
+            <div class="playlist-item">歌单 2</div>
+            <div class="playlist-item">歌单 3</div>
+            <div class="playlist-item">歌单 4</div>
+            <div class="playlist-item">歌单 5</div>
+            <!-- 根据需要添加更多歌单项 -->
+        </div>
+
+
+        <audio id="audioPlayer" controls hidden>
+            <source id="audioSource" src="" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+         <!-- 歌词显示区域 -->
+         <div class="lyrics">
+            <p id="lyricsText">Lyrics will appear here...</p>
+        </div>
+        <!-- 播放控制按钮 -->
+       
+        <div class="controls">
+            <button id="prevBtn" class="control-button"><i class="fas fa-backward"></i></button>
+            <button id="playBtn" class="control-button"><i class="fas fa-play"></i></button>
+
+
+            <button id="nextBtn" class="control-button"><i class="fas fa-forward"></i></button>
+        </div>
+      
+        
+
+       
+    </div>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
