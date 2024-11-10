@@ -5,7 +5,7 @@
 - [前端框架](#前端框架)
 - [后端集成](#后端集成)
 - [算法集成](#算法集成)
-- 静态网页运行浏览：https://pique2233.github.io/forest.github.io/templates/index.html
+- 静态网页运行浏览：https://pique2233.github.io/forest.github.io/templates/index1.html
 
 ---
 
