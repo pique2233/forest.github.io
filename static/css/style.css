@@ -295,14 +295,11 @@ body.light, body.dark {
     background: none;
     border: none;
     color: #ffffff;
+    font-size: 24px;
     cursor: pointer;
     margin: 0 15px;
     transition: color 0.3s;
-    font-size: 20px;
-    padding: 10px;
 }
-
-
 
 .controls button:hover {
     color: #1db954;
@@ -337,50 +334,3 @@ body.light, body.dark {
     animation-play-state: running;
 }
 
-/* 大屏幕设备（如台式机） */
-@media (min-width: 1024px) {
-    .player-container {
-        width: 600px;
-        height: 400px;
-    }
-    .playlist-container {
-        max-height: 200px;
-        margin-top: 20px;
-    }
-}
-
-/* 中等屏幕设备（如平板） */
-@media (max-width: 1024px) and (min-width: 768px) {
-    .player-container {
-        width: 80%;
-        height: auto;
-    }
-    .playlist-container {
-        max-height: 150px;
-        margin-top: 10px;
-    }
-}
-
-/* 小屏幕设备（如手机） */
-@media (max-width: 768px) {
-    .player-container {
-        width: 100%;
-        height: auto;
-        padding: 10px;
-    }
-    .playlist-container {
-        max-height: 120px;
-        margin-top: 5px;
-    }
-    .option, .controls button {
-        width: 60px;
-        height: 60px;
-        font-size: 14px;
-    }
-    .song-info h2 {
-        font-size: 16px;
-    }
-    .song-info p {
-        font-size: 12px;
-    }
-}
