@@ -71,18 +71,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     playBtn.addEventListener('click', togglePlay);
+    playBtn.addEventListener('touchstart', togglePlay);  // 添加触摸支持
 
-    nextBtn.addEventListener('click', () => {
+    // 下一首歌曲
+    function playNextSong() {
         currentSongIndex = (currentSongIndex + 1) % songList.length;
         loadSong(currentSongIndex);
         if (isPlaying) audioPlayer.play();
-    });
+    }
+    
+    nextBtn.addEventListener('click', playNextSong);
+    nextBtn.addEventListener('touchstart', playNextSong);  // 添加触摸支持
 
-    prevBtn.addEventListener('click', () => {
+    // 上一首歌曲
+    function playPreviousSong() {
         currentSongIndex = (currentSongIndex - 1 + songList.length) % songList.length;
         loadSong(currentSongIndex);
         if (isPlaying) audioPlayer.play();
-    });
+    }
+
+    prevBtn.addEventListener('click', playPreviousSong);
+    prevBtn.addEventListener('touchstart', playPreviousSong);  // 添加触摸支持
 
     // 初始加载推荐歌曲但不自动播放
     getRecommendations();
